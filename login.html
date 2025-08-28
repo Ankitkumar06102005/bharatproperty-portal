@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Bharat Property Portal</title>
+  <link rel="icon" href="assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --fg: #eaf2ff;
+      --muted: #9db3d8;
+      --p1: #0ea5e9;
+      --p2: #2563eb;
+      --success: #10b981;
+      --error: #ef4444;
+    }
+    
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(1200px 1200px at 20% -20%, #0e1630, transparent), var(--bg);
+      color: var(--fg);
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .header {
+      text-align: center;
+      padding: 40px 0;
+    }
+    
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .logo img {
+      height: 48px;
+      width: 48px;
+    }
+    
+    .logo h1 {
+      font-size: 2rem;
+      margin: 0;
+      background: linear-gradient(45deg, var(--p1), var(--p2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .auth-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      min-height: 70vh;
+    }
+    
+    .auth-form {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--fg);
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--p1);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    }
+    
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(45deg, var(--p1), var(--p2));
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .form-footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .form-footer a {
+      color: var(--p1);
+      text-decoration: none;
+    }
+    
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .otp-section {
+      display: none;
+    }
+    
+    .otp-section.show {
+      display: block;
+    }
+    
+    .otp-inputs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    
+    .otp-inputs input {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .visual-section {
+      position: relative;
+      min-height: 500px;
+    }
+    
+    .floating-card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .floating-card:nth-child(1) {
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .floating-card:nth-child(2) {
+      top: 30%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+    
+    .floating-card:nth-child(3) {
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+    
+    .message {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .message.success {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #10b981;
+    }
+    
+    .message.error {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+    }
+    
+    @media (max-width: 900px) {
+      .auth-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .visual-section {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+     <div class="container">
+     <header class="header">
+       <div class="logo">
+         <img src="assets/logo.svg" alt="Bharat Property" />
+         <h1>Bharat Property Portal</h1>
+       </div>
+       <div style="margin-top: 20px;">
+         <a href="index.html" style="color: var(--p1); text-decoration: none; margin-right: 20px;">← Back to Home</a>
+         <a href="portal.html" style="color: var(--p1); text-decoration: none;">Explore Properties</a>
+       </div>
+     </header>
+    
+    <div class="auth-container">
+      <div class="auth-form">
+        <div id="loginForm">
+          <h2 style="text-align: center; margin-bottom: 30px;">Welcome Back</h2>
+          
+          <div id="message"></div>
+          
+          <form id="loginFormElement">
+            <div class="form-group">
+              <label for="loginEmail">Email</label>
+              <input type="email" id="loginEmail" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <input type="password" id="loginPassword" required />
+            </div>
+            
+            <button type="submit" class="btn">Login</button>
+          </form>
+          
+          <div class="form-footer">
+            <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+          </div>
+        </div>
+        
+        <div id="registerForm" style="display: none;">
+          <h2 style="text-align: center; margin-bottom: 30px;">Create Account</h2>
+          
+          <div id="regMessage"></div>
+          
+          <form id="registerFormElement">
+            <div class="form-group">
+              <label for="regUsername">Username</label>
+              <input type="text" id="regUsername" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="regEmail">Email</label>
+              <input type="email" id="regEmail" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="regPhone">Phone</label>
+              <input type="tel" id="regPhone" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="regPassword">Password</label>
+              <input type="password" id="regPassword" required />
+            </div>
+            
+            <button type="submit" class="btn">Register</button>
+          </form>
+          
+          <div class="form-footer">
+            <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+          </div>
+        </div>
+        
+                 <div id="otpSection" class="otp-section">
+           <h3 style="text-align: center; margin-bottom: 20px;">Verify OTP</h3>
+           <p style="text-align: center; color: var(--muted); margin-bottom: 20px;">
+             We've sent a 6-digit code to your email
+           </p>
+           
+           <div id="otpMessage"></div>
+           
+           <div class="otp-inputs">
+             <input type="text" maxlength="1" class="otp-input" />
+             <input type="text" maxlength="1" class="otp-input" />
+             <input type="text" maxlength="1" class="otp-input" />
+             <input type="text" maxlength="1" class="otp-input" />
+             <input type="text" maxlength="1" class="otp-input" />
+             <input type="text" maxlength="1" class="otp-input" />
+           </div>
+           
+           <button class="btn" onclick="verifyOTP()">Verify OTP</button>
+           
+           <div class="form-footer">
+             <p><a href="#" onclick="resendOTP()">Resend OTP</a></p>
+             <p><a href="#" onclick="showLogin()">Back to Login</a></p>
+           </div>
+         </div>
+      </div>
+      
+      <div class="visual-section">
+        <div class="floating-card">
+          <h4>🏠 Find Your Dream Home</h4>
+          <p>Discover properties across India</p>
+        </div>
+        
+        <div class="floating-card">
+          <h4>💰 Best Prices</h4>
+          <p>Compare prices from multiple sources</p>
+        </div>
+        
+        <div class="floating-card">
+          <h4>📍 Smart Search</h4>
+          <p>Filter by location, price & amenities</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const API = new URLSearchParams(location.search).get('api') || 'http://localhost:5000';
+    let currentEmail = '';
+    
+    // Form switching
+    function showRegister() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('registerForm').style.display = 'block';
+      document.getElementById('otpSection').style.display = 'none';
+    }
+    
+    function showLogin() {
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('otpSection').style.display = 'none';
+    }
+    
+    function showOTP() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('otpSection').style.display = 'block';
+      setupOTPInputs();
+    }
+    
+    // OTP input handling
+    function setupOTPInputs() {
+      const inputs = document.querySelectorAll('.otp-input');
+      inputs.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+          if (e.target.value.length === 1 && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+          }
+        });
+        
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !e.target.value && index > 0) {
+            inputs[index - 1].focus();
+          }
+        });
+      });
+    }
+    
+    // Login form
+    document.getElementById('loginFormElement').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      
+      try {
+        const response = await fetch(`${API}/api/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          window.location.href = 'dashboard.html';
+        } else {
+          showMessage('login', data.error, 'error');
+        }
+      } catch (error) {
+        showMessage('login', 'Network error. Please try again.', 'error');
+      }
+    });
+    
+    // Register form
+    document.getElementById('registerFormElement').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('regUsername').value;
+      const email = document.getElementById('regEmail').value;
+      const phone = document.getElementById('regPhone').value;
+      const password = document.getElementById('regPassword').value;
+      
+      try {
+        const response = await fetch(`${API}/api/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, phone, password })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          currentEmail = email;
+          showMessage('register', 'Registration successful! Please verify your email with OTP.', 'success');
+          setTimeout(() => {
+            requestOTP(email);
+          }, 1000);
+        } else {
+          showMessage('register', data.error, 'error');
+        }
+      } catch (error) {
+        showMessage('register', 'Network error. Please try again.', 'error');
+      }
+    });
+    
+    // OTP functions
+    async function requestOTP(email) {
+      try {
+        const response = await fetch(`${API}/api/auth/request-otp`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        
+        if (response.ok) {
+          showOTP();
+        } else {
+          const data = await response.json();
+          showMessage('register', data.error, 'error');
+        }
+      } catch (error) {
+        showMessage('register', 'Failed to send OTP. Please try again.', 'error');
+      }
+    }
+    
+    async function verifyOTP() {
+      const inputs = document.querySelectorAll('.otp-input');
+      const otp = Array.from(inputs).map(input => input.value).join('');
+      
+      if (otp.length !== 6) {
+        showMessage('otp', 'Please enter complete OTP', 'error');
+        return;
+      }
+      
+      try {
+        const response = await fetch(`${API}/api/auth/verify-otp`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: currentEmail, otp })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          showMessage('otp', 'Email verified! You can now login.', 'success');
+          setTimeout(() => {
+            showLogin();
+            // Clear OTP inputs
+            inputs.forEach(input => input.value = '');
+          }, 2000);
+        } else {
+          showMessage('otp', data.error, 'error');
+        }
+      } catch (error) {
+        showMessage('otp', 'Failed to verify OTP. Please try again.', 'error');
+      }
+    }
+    
+    function resendOTP() {
+      if (currentEmail) {
+        requestOTP(currentEmail);
+      }
+    }
+    
+         function showMessage(form, message, type) {
+       let messageDiv;
+       if (form === 'login') {
+         messageDiv = document.getElementById('message');
+       } else if (form === 'register') {
+         messageDiv = document.getElementById('regMessage');
+       } else if (form === 'otp') {
+         messageDiv = document.getElementById('otpMessage');
+       }
+       
+       if (messageDiv) {
+         messageDiv.innerHTML = `<div class="message ${type}">${message}</div>`;
+       }
+     }
+    
+    // Check if user is already logged in
+    if (localStorage.getItem('token')) {
+      window.location.href = 'dashboard.html';
+    }
+  </script>
+</body>
+</html>

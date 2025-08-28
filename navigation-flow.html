@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navigation Flow - Bharat Property Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .flow-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .flow-step {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid #007bff;
+    }
+    .step-number {
+      background: #007bff;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+    .step-content h3 {
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+    .step-content p {
+      margin: 0;
+      color: #666;
+    }
+    .arrow {
+      text-align: center;
+      font-size: 24px;
+      color: #007bff;
+      margin: 10px 0;
+    }
+    .page-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .page-link {
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+    .page-link:hover {
+      background: #0056b3;
+    }
+    .page-link.secondary {
+      background: #6c757d;
+    }
+    .page-link.secondary:hover {
+      background: #545b62;
+    }
+  </style>
+</head>
+<body>
+  <div class="flow-container">
+    <h1>🗺️ Bharat Property Portal - Navigation Flow</h1>
+    
+    <div class="flow-step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Start Here: Main Home Page</h3>
+        <p><strong>index.html</strong> - Landing page with navigation to all other pages</p>
+      </div>
+    </div>
+    
+    <div class="arrow">⬇️</div>
+    
+    <div class="flow-step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Choose Your Path</h3>
+        <p>From the home page, you can navigate to:</p>
+        <ul>
+          <li><strong>Explore Properties</strong> → portal.html (Browse cities without login)</li>
+          <li><strong>Get Started</strong> → login.html (Create account or sign in)</li>
+          <li><strong>Original Site</strong> → index3.html (Enhanced original page)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="arrow">⬇️</div>
+    
+    <div class="flow-step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Authentication Flow</h3>
+        <p><strong>login.html</strong> → Register → OTP Verification → <strong>dashboard.html</strong></p>
+        <p>After login, you're redirected to the main dashboard with full features</p>
+      </div>
+    </div>
+    
+    <div class="arrow">⬇️</div>
+    
+    <div class="flow-step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>Main Application</h3>
+        <p><strong>dashboard.html</strong> - Full property search, city exploration, and user features</p>
+        <p>From here you can navigate back to explore or logout</p>
+      </div>
+    </div>
+    
+    <h2 style="margin-top: 40px;">📱 Quick Navigation Links</h2>
+    <div class="page-links">
+      <a href="index.html" class="page-link">🏠 Home Page</a>
+      <a href="portal.html" class="page-link">🔍 Explore Properties</a>
+      <a href="login.html" class="page-link">🔐 Login/Register</a>
+      <a href="dashboard.html" class="page-link">📊 Dashboard</a>
+      <a href="index3.html" class="page-link secondary">📄 Original Site</a>
+      <a href="test-registration.html" class="page-link secondary">🧪 Test Page</a>
+    </div>
+    
+    <h2 style="margin-top: 40px;">🔧 How to Test</h2>
+    <ol>
+      <li><strong>Start with index.html</strong> - This is your main entry point</li>
+      <li><strong>Test registration</strong> - Go to login.html and create an account</li>
+      <li><strong>Check OTP</strong> - Look in the browser console for the OTP code</li>
+      <li><strong>Access dashboard</strong> - After OTP verification, you'll be redirected</li>
+      <li><strong>Navigate freely</strong> - Use the navigation links to move between pages</li>
+    </ol>
+    
+    <h2 style="margin-top: 40px;">⚠️ Important Notes</h2>
+    <ul>
+      <li><strong>Back button works</strong> - Browser back button will take you to previous pages</li>
+      <li><strong>OTP is shown in console</strong> - Press F12 → Console to see the OTP code</li>
+      <li><strong>Navigation is consistent</strong> - All pages have links back to home</li>
+      <li><strong>Authentication required</strong> - Dashboard only accessible after login</li>
+    </ul>
+  </div>
+</body>
+</html>
+
+

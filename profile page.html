@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EventLink Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <span class="text-2xl font-bold">🔗 EVENTLINK</span>
+    </div>
+    <div class="flex space-x-6">
+      <a href="#" class="hover:text-blue-600">Home</a>
+      <a href="#" class="hover:text-blue-600">Events</a>
+      <a href="#" class="hover:text-blue-600">Teams</a>
+      <a href="#" class="hover:text-blue-600">About us</a>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span>Hello, Gaurav</span>
+      <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="p-8">
+    <h1 class="text-2xl font-semibold mb-6">Welcome 👋</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+
+      <!-- Stats Box -->
+      <div class="bg-white rounded-xl shadow p-4">
+        <p class="text-2xl font-bold">5</p>
+        <p>Events Joined</p>
+        <p class="mt-2 text-2xl font-bold">2</p>
+        <p>Active Teams</p>
+        <p class="mt-2 text-2xl font-bold">1</p>
+        <p>Pending Invite</p>
+      </div>
+
+      <!-- Upcoming Events -->
+      <div class="bg-white rounded-xl shadow p-4">
+        <h3 class="text-gray-600 font-medium mb-2">📅 UCCIN6 Events</h3>
+        <div>
+          <p class="font-semibold">Innovate</p>
+          <p class="text-sm text-gray-500">3 members</p>
+        </div>
+        <div class="mt-4">
+          <p class="font-semibold">Hackathon</p>
+          <p class="text-sm text-gray-500">Jun 10, 2024</p>
+        </div>
+      </div>
+
+      <!-- Your Teams -->
+      <div class="bg-white rounded-xl shadow p-4">
+        <h3 class="font-medium mb-3">📁 Your Teams</h3>
+        <ul class="text-sm space-y-2">
+          <li class="flex justify-between"><span>Innovate</span><span class="text-gray-500">3 m</span></li>
+          <li class="flex justify-between"><span>Project X</span><span class="text-gray-500">4 m</span></li>
+        </ul>
+      </div>
+
+      <!-- Create Your Profile -->
+      <div class="bg-white rounded-xl shadow p-4">
+        <h3 class="text-lg font-semibold mb-2">Create Your Profile</h3>
+        <p class="text-sm text-gray-500">For better teammate matches, create your profile.</p>
+        <a href="#" class="text-blue-600 block mt-2">Complete Profile</a>
+        <div class="mt-4 flex space-x-2">
+          <button class="bg-blue-600 text-white px-3 py-2 rounded">Find Teammates</button>
+          <button class="bg-green-500 text-white px-3 py-2 rounded">Create a team</button>
+        </div>
+      </div>
+
+      <!-- Candidates -->
+      <div class="bg-white rounded-xl shadow p-4">
+        <h3 class="font-medium mb-3">👥 Candidates</h3>
+        <ul class="space-y-3 text-sm">
+          <li class="flex justify-between items-center">
+            <div>
+              <p class="font-semibold">Ananya</p>
+              <p class="text-gray-500">Front-end Developer</p>
+            </div>
+            <button class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300">Invite</button>
+          </li>
+          <li class="flex justify-between items-center">
+            <div>
+              <p class="font-semibold">Ravi</p>
+              <p class="text-gray-500">UI/UX Designer</p>
+            </div>
+            <button class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300">Invite</button>
+          </li>
+          <li class="flex justify-between items-center">
+            <div>
+              <p class="font-semibold">Sneha</p>
+              <p class="text-gray-500">Product Manager</p>
+            </div>
+            <button class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300">Invite</button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="bg-white rounded-xl shadow p-4">
+        <h3 class="font-medium mb-3">🕒 Recent Activity</h3>
+        <ul class="text-sm space-y-2 text-gray-700">
+          <li>Jonathan joined Team Innovate 2h</li>
+          <li>You have an event coming up: <a href="#" class="text-blue-600">Design Meetup</a></li>
+          <li>Team Collab completed Sprint Review 1d</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

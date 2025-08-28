@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bharat Property Portal — Discover Cities</title>
+  <link rel="icon" href="assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/portal.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.svg" alt="Bharat Property" />
+        <span>Bharat Property</span>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="index3.html">Original Site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="explore">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1><span class="fade-in">Find the best property</span> in your city</h1>
+          <p class="sub">Search any Indian city and get live links, locality suggestions, prices and affordability insights.</p>
+          <div class="search-box">
+            <input id="cityInput" placeholder="Type a city — Delhi, Mumbai, Bangalore..." />
+            <button id="searchBtn">Search</button>
+          </div>
+          <div id="suggestions" class="suggestions hidden"></div>
+        </div>
+        <div class="hero-visual">
+          <div class="orb orb-1"></div>
+          <div class="orb orb-2"></div>
+          <div class="orb orb-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="results container" id="cities">
+      <div id="resultCard" class="card hidden">
+        <div class="card-head">
+          <h2 id="cityName">City</h2>
+          <span id="afford" class="afford">Affordability</span>
+        </div>
+        <div class="grid">
+          <div>
+            <p class="metric"><span>Avg Apartment:</span> <strong id="avgApartment">—</strong></p>
+            <p class="metric"><span>Avg Land:</span> <strong id="avgLand">—</strong></p>
+          </div>
+          <div>
+            <h3>Localities</h3>
+            <ul id="localities"></ul>
+          </div>
+          <div>
+            <h3>Explore</h3>
+            <ul class="links">
+              <li><a id="lnkMagic" target="_blank" rel="noopener">MagicBricks</a></li>
+              <li><a id="lnkHousing" target="_blank" rel="noopener">Housing.com</a></li>
+              <li><a id="lnk99" target="_blank" rel="noopener">99acres</a></li>
+              <li><a id="lnkWiki" target="_blank" rel="noopener">Wikipedia</a></li>
+              <li><a id="lnkMaps" target="_blank" rel="noopener">Google Maps</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="insights" id="insights">
+      <div class="container">
+        <h2>How affordability works</h2>
+        <p>Affordability is a relative indicator based on average listing prices. Lower score indicates more expensive cities. Use it to compare opportunities across cities and plan budgets with our calculator.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/property-images.js"></script>
+  <script src="scripts/portal.js"></script>
+</body>
+</html>
+
+
